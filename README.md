@@ -1,2 +1,3 @@
 # helloWorld
-My firt project using Python
+#My first project using Python
+print("Hello World!")
