@@ -1,0 +1,39 @@
+import operator
+
+class Calculator:
+
+    def __init__(self, operation):
+        self.operation = operation
+
+    def get_operation(self):
+        return self.operation
+
+    def set_operation(self, value):
+        self.operation = value
+
+    def result(self):
+        #We find the operator to do
+        operatorText = "".join(filter(lambda c: not c.isdigit(),self.operation))
+        print(f'Operador encontrado: {operatorText}')
+        operadores = {
+            "+": operator.add,
+            "-": operator.sub,
+            "*": operator.mul,
+            "/": operator.truediv,
+            "**": operator.pow
+        }
+
+        operacion = operadores.get(operatorText)
+        
+        if operacion:
+            text =  self.operation.split(operatorText)
+            print(f'operacion: {operacion}, operadores: {text}')
+
+            opResult = operacion(int(text[0]), int(text[1]))
+            return opResult
+        else:
+            return "Operador no válido"
+        
+operation1 = Calculator('5*10')
+
+print(operation1.result())
